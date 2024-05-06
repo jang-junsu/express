@@ -11,6 +11,18 @@ export const createApp = (client: RedisClient) => {
     app.get("/", (req, res) => {
         res.status(200).send("hello from express, deployed by github action to AWS lightsail") 
     })
+
+    function fibonacci (n: number): number {
+        if (n <= 1 ) return n;
+        return fibonacci(n-1) + fibonacci(n-2);
+    }
+
+    app.get("/fibonacci/:n", async (req,res) => {
+        const n = parseInt(req.params.n, 10);
+        const result = fibonacci(n)
+        res.status(200).send(`Fibonacci(${n}) = ${result}`)
+    })
+
     app.post("/messages", async (req, res) => {
         const { msg } = req.body;
         await client.lPush(REDIS_KEY, msg)
