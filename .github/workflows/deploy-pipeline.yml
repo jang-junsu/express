@@ -48,6 +48,6 @@ jobs:
                     echo "run build"
                     npm run build || exit 1
 
-                    sudo pm2 reload
+                    sudo pm2 reload build/index.js -i max --time
                     exit;
                 "
