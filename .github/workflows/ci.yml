@@ -1,1 +1,26 @@
-name: Github Action Ci
+name: GitHub Actions ci 
+run-name: ${{ github.actor }} do test  🚀
+on: [pull_request]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo "�🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup node js
+        uses: actions/setup_node@v3
+        with:
+          node-version: "22"
+      - name: Install npm dependencies
+        run: npm ci
+      - name: Install and run redis-server
+        run: |
+          sudo apt-get update 
+          sudo apt-get install -y redis-server
+          redis-server -demonize yes --requirepass test_env --port 6380
+      - name: Run test
+        run: npm run test
+      - name: Build test
+        run: npm run build
+
