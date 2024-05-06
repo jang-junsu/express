@@ -23,8 +23,13 @@ jobs:
                     cd ~/express
                     git pull || exit 1
                     npm install || exit 1
+                    echo "run build"
                     npm run build || exit 1
+
+                    echo "pkill"
                     sudo pkill node || exit 1
+
+                    echo "start server"
                     sudo npm run start & npx wait-on http://localhost
                     exit
                 "
