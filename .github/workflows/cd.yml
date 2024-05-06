@@ -27,7 +27,7 @@ jobs:
                     npm run build || exit 1
 
                     echo "pkill"
-                    sudo pkill node || exit 1
+                    sudo pkill node
 
                     echo "start server"
                     sudo npm run start & npx wait-on http://localhost
