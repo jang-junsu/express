@@ -7,7 +7,7 @@ dotenv.config();
 const { PORT, REDIS_URL } = process.env
 
 if (!PORT) throw new Error("PORT is required")
-if (!REDIS_URL) throw new Error("REDIS_URL is required")
+if (!REDIS_URL) throw new Error("REDIS_URL is required !")
 
 const startServer = async () => {
     const client = redis.createClient({url: REDIS_URL});
@@ -17,6 +17,23 @@ const startServer = async () => {
     app.listen(PORT, () => {
         console.log(`App listen at port ${PORT}`);
     });
+
+    return app
 }
 
-startServer();
+const app = startServer();
+
+const gracefuleShutdown = async () => {
+    const _app = await app;
+    //_app.close(() =>{
+        // remove connection pool
+    // })
+    // process.exit()
+}
+
+process.on("SIGTERM", () => {gracefuleShutdown()})
+
+process.on("SIGINT", () => {
+    console.log("SIGINT")
+    
+})
