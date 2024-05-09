@@ -23,7 +23,7 @@ const startServer = async () => {
 
 const app = startServer();
 
-const gracefuleShutdown = async () => {
+const gracefulShutdown = async () => {
     const _app = await app;
     //_app.close(() =>{
         // remove connection pool
@@ -31,9 +31,8 @@ const gracefuleShutdown = async () => {
     // process.exit()
 }
 
-process.on("SIGTERM", () => {gracefuleShutdown()})
+process.on("SIGTERM", () => {gracefulShutdown()})
 
 process.on("SIGINT", () => {
     console.log("SIGINT")
-    
 })
