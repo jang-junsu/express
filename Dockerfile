@@ -1,5 +1,5 @@
 # Build
-FROM node:22 as build
+FROM --platform=linux/amd64 node:22 as build
 
 WORKDIR /usr/src/app
 COPY package*.json .
@@ -10,7 +10,7 @@ COPY . .
 RUN npm run build
 
 # Production
-FROM node:22 as production
+FROM --platform=linux/amd64 node:22 as production
 
 WORKDIR /usr/src/app
 
