@@ -12,6 +12,11 @@ export const createApp = (client: RedisClient) => {
         res.status(200).send("hello from express, deployed by github action to AWS lightsail") 
     })
 
+    app.get("/crash", () => {
+        console.log("server crashed");
+        process.exit()
+    })
+    
     function fibonacci (n: number): number {
         if (n <= 1 ) return n;
         return fibonacci(n-1) + fibonacci(n-2);
