@@ -13,6 +13,7 @@ const startServer = async () => {
     const client = redis.createClient({url: REDIS_URL});
     await client.connect();
 
+    const { hello } = process.env
     const app = createApp(client);
     app.listen(PORT, () => {
         console.log(`App listen at port ${PORT}`);
