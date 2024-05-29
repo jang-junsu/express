@@ -26,7 +26,7 @@ const app = startServer();
 
 const gracefulShutdown = async () => {
     const _app = await app;
-    //_app.close(() =>{
+    // _app.close(() =>{
         // remove connection pool
     // })
     // process.exit()
