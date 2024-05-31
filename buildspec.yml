@@ -5,8 +5,7 @@ run-as: Linux-user-name
 env:
   shell: shell-tag
   variables:
-    key: "value"
-    key: "value"
+    DOCKER_BUILD_KEY: "1"
   parameter-store:
     key: "value"
     key: "value"
