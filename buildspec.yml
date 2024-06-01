@@ -6,14 +6,8 @@ env:
   shell: shell-tag
   variables:
     DOCKER_BUILD_KEY: "1"
-  parameter-store:
-    key: "value"
-    key: "value"
-  exported-variables:
-    - variable
-    - variable
   secrets-manager:
-    key: secret-id:json-key:version-stage:version-id
+    key: aws-key
   git-credential-helper: no | yes
 
 proxy:
