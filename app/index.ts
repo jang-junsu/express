@@ -6,8 +6,8 @@ dotenv.config();
 
 const { PORT, REDIS_URL } = process.env
 
-// if (!PORT) throw new Error("PORT is required")
-//. if (!REDIS_URL) throw new Error("REDIS_URL is required !")
+if (!PORT) throw new Error("PORT is required")
+if (!REDIS_URL) throw new Error("REDIS_URL is required !")
 
 const startServer = async () => {
     const client = redis.createClient({url: REDIS_URL});
