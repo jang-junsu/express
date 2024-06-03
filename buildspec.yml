@@ -39,9 +39,7 @@ phases:
     on-failure: ABORT | CONTINUE
     commands:
       - command
-      - command
     finally:
-      - command
       - command
     # steps:
   build:
@@ -49,9 +47,7 @@ phases:
     on-failure: ABORT | CONTINUE
     commands:
       - command
-      - command
     finally:
-      - command
       - command
     # steps:
   post_build:
